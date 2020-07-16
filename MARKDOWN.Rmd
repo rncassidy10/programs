@@ -1,0 +1,24 @@
+---
+title: "markdown"
+author: "Richard Cassidy"
+date: "7/16/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{R} 
+trpv <- read.table("~/Desktop/Rchallenge/trpv1.tsv")  #read in data
+
+cond=(trpv$V15<0.5)    #write a funcion to extract rows that have <0.5 in col V15
+
+temp <- trpv[cond,]   #perform function on trpv and save to a temp variable
+
+ans <- temp[c("V1","V2" ,"V15")]    #extract only rows 1,2,and 15 and save to the ans variable
+
+write.table(ans,file="ANSWER",sep="\t",row.names=FALSE)       #save the ans variable as a file named ANSWER
+```
+
